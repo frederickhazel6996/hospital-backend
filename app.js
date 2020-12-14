@@ -13,7 +13,6 @@ const csurf = require('csurf');
 
 let app = express();
 require('dotenv').config();
-const cors = require('cors');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
