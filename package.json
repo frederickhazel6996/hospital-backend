@@ -1,8 +1,8 @@
 {
-    "name": "ecommerce",
+    "name": "hospital-management",
     "version": "1.0.0",
     "private": true,
-    "description": "ecommerce",
+    "description": "server for hospital management system",
     "scripts": {
         "start": "pm2-runtime start ecosystem.config.js --env production",
         "heroku-postbuild": "cd client && npm install && npm run build",
