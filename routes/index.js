@@ -1,5 +1,4 @@
 let express = require('express');
-
 const app = express();
 
 const { body, query, param } = require('express-validator');

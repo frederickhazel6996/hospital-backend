@@ -1,4 +1,4 @@
 const adminRouter = require('express').Router();
-// adminRouter.use('/register', require('./register'));
+adminRouter.use('/add-admin', require('./add-admin'));
 
 module.exports = adminRouter;

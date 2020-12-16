@@ -25,6 +25,9 @@ app.use(compression());
 app.use(helmet());
 
 // app.use(cors());
+//#################SETTING UP GLOBALS######################
+// eslint-disable-next-line no-global-assign
+global.dbService = require('./routes/services/db');
 
 //#################RATE LIMITING######################
 const limiter = rateLimit({
@@ -57,14 +60,14 @@ if (process.env.CSRF === 'on') {
 //####################Setting up Mongoose Connection#################
 
 if (process.env.NODE_ENV === 'production') {
-    console.log(chalk.bgGreenBright('PRODUCTION MONGO'));
+    console.log(chalk.bgGreenBright('PRODUCTION MONGO AND PG'));
     mongoose.connect(process.env.URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     });
 }
 if (process.env.NODE_ENV === 'development') {
-    console.log(chalk.bgGreenBright('DEVELOPMENT MONGO'));
+    console.log(chalk.bgGreenBright('DEVELOPMENT MONGO AND PG'));
     mongoose.connect(process.env.URI2, {
         useNewUrlParser: true,
         useUnifiedTopology: true

@@ -12,5 +12,9 @@
         "no-undef": "warn",
         "no-unused-vars": "warn",
         "no-empty": "off"
+    },
+    "globals": {
+        "dbService": false,
+        "_validator": false
     }
 }
