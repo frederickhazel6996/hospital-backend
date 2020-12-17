@@ -38,6 +38,8 @@ let findWard = require('./Ward/findWard');
 let findAllWard = require('./Ward/findAllWard');
 let deleteWard = require('./Ward/deleteWard');
 let updateWard = require('./Ward/updateWard');
+let findRecordWhere = require('./Record/findRecordWhere');
+let findVitalWhere = require('./Vital/findVitalWhere');
 
 module.exports = {
     addAdmin,
@@ -79,5 +81,7 @@ module.exports = {
     findWard,
     findAllWard,
     updateWard,
-    deleteWard
+    deleteWard,
+    findRecordWhere,
+    findVitalWhere
 };

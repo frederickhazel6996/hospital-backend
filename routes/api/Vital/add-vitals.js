@@ -1,14 +1,14 @@
 let Route = require('express').Router();
-let bcrypt = require('bcryptjs');
 let { validationResult } = require('express-validator');
 let spawn = require('spawn-password');
 let authentication = require('../../services/middlewares/jwt');
-let validator = require('./adminValidators');
+let validator = require('./vitalValidator');
+let moment = require('moment');
 
 Route.post(
     '/',
     authentication,
-    validator.addAdminChecker,
+    validator.addVitalChecker,
     async function (req, res) {
         try {
             let errors = validationResult(req);
@@ -17,22 +17,29 @@ Route.post(
             }
             const db = dbService;
 
-            let { email, password, name } = req.body;
+            let {
+                weight,
+                height,
+                temperature,
+                blood_pressure,
+                patient_id
+            } = req.body;
 
-            let temporalAdminId = `ADM${spawn
+            let temporalId = `VITALS${spawn
                 .spawnAlphaNumericLength(10)
                 .toUpperCase()}`;
 
-            let admin = await db.findAdmin({ username: email });
-            if (admin) return res.status(400).send('Admin Exists');
-            await db.addAdmin({
-                admin_id: temporalAdminId,
-                name: name,
-                username: email.toLowerCase(),
-                password: bcrypt.hashSync(password, bcrypt.genSaltSync())
+            await db.addVital({
+                vital_id: temporalId,
+                weight,
+                height,
+                temperature,
+                blood_pressure,
+                patient_id,
+                checkin_date: moment().format('MMMM Do YYYY')
             });
 
-            res.status(201).send('Admin Added');
+            return res.status(201).send('Vitals Added');
         } catch (e) {
             return res.status(500);
         }

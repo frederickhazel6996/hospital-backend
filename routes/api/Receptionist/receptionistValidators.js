@@ -1,6 +1,6 @@
 let { check } = require('express-validator');
-let addAdminChecker = [
-    check('email', 'email should not be empty')
+let addReceptionistChecker = [
+    check('username', 'username should not be empty')
         .not()
         .isEmpty()
         .isString()
@@ -12,8 +12,8 @@ let addAdminChecker = [
         .isString(),
     check('name', 'Name should  not be empty').not().isEmpty().isString()
 ];
-let updateAdminChecker = [
-    check('email', 'email should not be empty')
+let updateReceptionistChecker = [
+    check('username', 'username should not be empty')
         .not()
         .isEmpty()
         .isString()
@@ -23,11 +23,14 @@ let updateAdminChecker = [
         .not()
         .isEmpty()
         .isString(),
-    check('admin_id', 'ID should  not be empty').not().isEmpty().isString(),
+    check('receptionist_id', 'ID should  not be empty')
+        .not()
+        .isEmpty()
+        .isString(),
     check('name', 'Name should  not be empty').not().isEmpty().isString()
 ];
-let loginAdminChecker = [
-    check('email', 'email should not be empty')
+let loginReceptionistChecker = [
+    check('username', 'username should not be empty')
         .not()
         .isEmpty()
         .isString()
@@ -39,4 +42,8 @@ let loginAdminChecker = [
         .isString()
 ];
 
-module.exports = { addAdminChecker, loginAdminChecker, updateAdminChecker };
+module.exports = {
+    addReceptionistChecker,
+    loginReceptionistChecker,
+    updateReceptionistChecker
+};

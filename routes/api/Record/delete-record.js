@@ -1,6 +1,5 @@
 let Route = require('express').Router();
 let { validationResult } = require('express-validator');
-
 let authentication = require('../../services/middlewares/jwt');
 
 Route.get('/:id', authentication, async function (req, res) {
@@ -9,12 +8,12 @@ Route.get('/:id', authentication, async function (req, res) {
         if (!errors.isEmpty()) {
             return res.status(422).json({ errors: errors.array() });
         }
-        const { id: userID } = req.params;
+        const { id: recordID } = req.params;
 
         const db = dbService;
-        await db.deleteAdmin({ id: userID });
+        await db.deleteRecord({ id: recordID });
 
-        res.status(201).send('Admin Deleted');
+        res.status(201).send('Record Deleted');
     } catch (e) {
         return res.status(500);
     }

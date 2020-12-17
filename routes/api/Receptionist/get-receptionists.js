@@ -1,13 +1,15 @@
 let Route = require('express').Router();
 let authentication = require('../../services/middlewares/jwt');
+
 Route.get('/', authentication, async function (req, res) {
     try {
         const db = dbService;
 
-        let admins = await db.findAllAdmin();
-        if (!admins) return res.status(400).send('Admins do not Exist');
+        let receptionist = await db.findAllReceptionist();
+        if (!receptionist)
+            return res.status(400).send('Receptionists do not Exist');
 
-        res.status(201).send(admins);
+        res.status(201).send(receptionist);
     } catch (e) {
         return res.status(500);
     }

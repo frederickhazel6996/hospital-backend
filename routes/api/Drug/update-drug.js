@@ -1,13 +1,12 @@
 let Route = require('express').Router();
-let bcrypt = require('bcryptjs');
 let { validationResult } = require('express-validator');
 let authentication = require('../../services/middlewares/jwt');
-let validator = require('./adminValidators');
+let validator = require('./drugValidators');
 
 Route.post(
     '/',
     authentication,
-    validator.updateAdminChecker,
+    validator.updateDrugChecker,
     async function (req, res) {
         try {
             let errors = validationResult(req);
@@ -16,17 +15,16 @@ Route.post(
             }
             const db = dbService;
 
-            let { email, password, name, admin_id } = req.body;
+            let { name, stock, drug_id } = req.body;
 
-            let admin = await db.updateAdmin(
-                { admin_id: admin_id },
+            let admin = await db.updateDrug(
+                { drug_id: drug_id },
                 {
-                    username: email.toLowerCase(),
-                    password: bcrypt.hashSync(password, bcrypt.genSaltSync()),
-                    name: name
+                    name,
+                    stock
                 }
             );
-            if (admin) return res.status(400).send('Admin Updated');
+            if (admin) return res.status(400).send('Drug Updated');
 
             return res.status(201).send('Update failed');
         } catch (e) {

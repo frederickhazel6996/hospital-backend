@@ -1,14 +1,13 @@
 let Route = require('express').Router();
-let bcrypt = require('bcryptjs');
 let { validationResult } = require('express-validator');
 let spawn = require('spawn-password');
 let authentication = require('../../services/middlewares/jwt');
-let validator = require('./adminValidators');
+let validator = require('./wardValidator');
 
 Route.post(
     '/',
     authentication,
-    validator.addAdminChecker,
+    validator.addWardChecker,
     async function (req, res) {
         try {
             let errors = validationResult(req);
@@ -17,22 +16,21 @@ Route.post(
             }
             const db = dbService;
 
-            let { email, password, name } = req.body;
+            let { name, number_beds } = req.body;
 
-            let temporalAdminId = `ADM${spawn
+            let temporalId = `WARD${spawn
                 .spawnAlphaNumericLength(10)
                 .toUpperCase()}`;
 
-            let admin = await db.findAdmin({ username: email });
-            if (admin) return res.status(400).send('Admin Exists');
-            await db.addAdmin({
-                admin_id: temporalAdminId,
-                name: name,
-                username: email.toLowerCase(),
-                password: bcrypt.hashSync(password, bcrypt.genSaltSync())
+            let ward = await db.findWard({ name: name });
+            if (ward) return res.status(400).send('Ward Exists');
+            await db.addWard({
+                ward_id: temporalId,
+                name,
+                number_beds
             });
 
-            res.status(201).send('Admin Added');
+            res.status(201).send('Ward Added');
         } catch (e) {
             return res.status(500);
         }
