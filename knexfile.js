@@ -16,7 +16,7 @@ module.exports = {
             directory: './knex/seeds'
         }
     },
-    test: {
+    testing: {
         client: 'postgresql',
         connection: process.env.PG_URL_TEST,
 

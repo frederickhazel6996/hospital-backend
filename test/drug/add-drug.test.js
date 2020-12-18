@@ -14,7 +14,7 @@ test('Add drug to database', async () => {
     await request(testapp)
         .post('/api/drug/add-drug')
         .send({
-            name: 'postinor 3',
+            name: 'postinor 10',
             stock: 290
         })
         .set('Authorization', `Bearer ${token}`)
