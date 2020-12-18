@@ -16,6 +16,21 @@ module.exports = {
             directory: './knex/seeds'
         }
     },
+    test: {
+        client: 'postgresql',
+        connection: process.env.PG_URL_TEST,
+
+        pool: {
+            min: 2,
+            max: 10
+        },
+        migrations: {
+            directory: './knex/migrations'
+        },
+        seeds: {
+            directory: './knex/seeds'
+        }
+    },
 
     staging: {
         client: 'postgresql',

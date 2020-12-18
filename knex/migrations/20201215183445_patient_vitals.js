@@ -7,6 +7,7 @@ exports.up = function (knex) {
         table.float('height').unique();
         table.float('temperature').unique();
         table.float('blood_pressure').unique();
+        table.float('stock');
         table.string('checkin_date').unique();
         table.string('patient_id').references('patient.patient_id');
         table.timestamp('created_at').defaultTo(knex.fn.now());
