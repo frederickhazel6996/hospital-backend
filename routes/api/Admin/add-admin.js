@@ -23,7 +23,7 @@ Route.post(
                 .spawnAlphaNumericLength(10)
                 .toUpperCase()}`;
 
-            let admin = await db.findAdmin({ username: email });
+            let admin = await db.findAdmin({ username: email.toLowerCase() });
             if (admin) return res.status(400).send('Admin Exists');
             await db.addAdmin({
                 admin_id: temporalAdminId,
@@ -32,7 +32,7 @@ Route.post(
                 password: bcrypt.hashSync(password, bcrypt.genSaltSync())
             });
 
-            res.status(201).send('Admin Added');
+            res.status(201).send({ admin_id: temporalAdminId });
         } catch (e) {
             return res.status(500);
         }

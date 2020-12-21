@@ -11,7 +11,7 @@ Route.get('/:id', authentication, async function (req, res) {
         const { id: wardID } = req.params;
 
         const db = dbService;
-        await db.deleteWard({ id: wardID });
+        await db.deleteWard({ ward_id: wardID });
 
         res.status(201).send('Ward Deleted');
     } catch (e) {

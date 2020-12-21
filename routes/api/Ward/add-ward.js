@@ -22,7 +22,7 @@ Route.post(
                 .spawnAlphaNumericLength(10)
                 .toUpperCase()}`;
 
-            let ward = await db.findWard({ name: name });
+            let ward = await db.findWard({ name: name.toLowerCase() });
             if (ward) return res.status(400).send('Ward Exists');
             await db.addWard({
                 ward_id: temporalId,
@@ -30,7 +30,7 @@ Route.post(
                 number_beds
             });
 
-            res.status(201).send('Ward Added');
+            res.status(201).send({ ward_id: temporalId });
         } catch (e) {
             return res.status(500);
         }

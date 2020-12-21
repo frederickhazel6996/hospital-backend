@@ -26,9 +26,9 @@ Route.post(
                     name: name
                 }
             );
-            if (admin) return res.status(400).send('Admin Updated');
+            if (admin) return res.status(201).send('Admin Updated');
 
-            return res.status(201).send('Update failed');
+            return res.status(501).send('Update failed');
         } catch (e) {
             return res.status(500);
         }

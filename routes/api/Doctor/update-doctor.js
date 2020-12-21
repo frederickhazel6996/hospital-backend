@@ -41,9 +41,9 @@ Route.post(
                     password: bcrypt.hashSync(password, bcrypt.genSaltSync())
                 }
             );
-            if (admin) return res.status(400).send('Doctor Updated');
+            if (admin) return res.status(201).send('Doctor Updated');
 
-            return res.status(201).send('Update failed');
+            return res.status(501).send('Update failed');
         } catch (e) {
             return res.status(500);
         }

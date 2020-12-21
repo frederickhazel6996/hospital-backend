@@ -13,7 +13,7 @@ Route.get('/:id', authentication, async function (req, res) {
         const db = dbService;
         await db.deleteVital({ id: deleteID });
 
-        res.status(201).send('Vitals Deleted');
+        res.status(200).send('Vitals Deleted');
     } catch (e) {
         return res.status(500);
     }

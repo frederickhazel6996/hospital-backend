@@ -14,7 +14,7 @@ Route.post('/', validator.loginAdminChecker, async function (req, res) {
 
         let { email, password } = req.body;
 
-        let admin = await db.findAdmin({ username: email });
+        let admin = await db.findAdmin({ username: email.toLowerCase() });
         if (!admin) return res.status(400).send('Admin Does Not Exists');
 
         let user = {
@@ -23,7 +23,7 @@ Route.post('/', validator.loginAdminChecker, async function (req, res) {
         let access_token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET);
 
         if (bcrypt.compareSync(password, admin.password) === true)
-            return res.status(201).send({
+            return res.status(200).send({
                 name: admin.name,
                 access_token: access_token
             });

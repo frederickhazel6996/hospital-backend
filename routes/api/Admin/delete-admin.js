@@ -12,7 +12,7 @@ Route.get('/:id', authentication, async function (req, res) {
         const { id: userID } = req.params;
 
         const db = dbService;
-        await db.deleteAdmin({ id: userID });
+        await db.deleteAdmin({ admin_id: userID });
 
         res.status(201).send('Admin Deleted');
     } catch (e) {

@@ -14,7 +14,9 @@ Route.post('/', validator.loginReceptionistChecker, async function (req, res) {
 
         let { username, password } = req.body;
 
-        let receptionist = await db.findReceptionist({ username: username });
+        let receptionist = await db.findReceptionist({
+            username: username.toLowerCase()
+        });
         if (!receptionist)
             return res.status(400).send('Receptionist Does Not Exists');
 
@@ -24,7 +26,7 @@ Route.post('/', validator.loginReceptionistChecker, async function (req, res) {
         let access_token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET);
 
         if (bcrypt.compareSync(password, receptionist.password) === true)
-            return res.status(201).send({
+            return res.status(200).send({
                 receptionist: receptionist,
                 access_token: access_token
             });

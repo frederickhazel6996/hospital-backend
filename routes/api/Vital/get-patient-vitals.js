@@ -22,7 +22,7 @@ Route.get(
                     .status(400)
                     .send('Patient Vitals Records do not Exist');
 
-            res.status(201).send(records);
+            return res.status(200).send(records);
         } catch (e) {
             return res.status(500);
         }

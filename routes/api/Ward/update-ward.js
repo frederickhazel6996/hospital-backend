@@ -24,9 +24,9 @@ Route.post(
                     number_beds
                 }
             );
-            if (admin) return res.status(400).send('Ward Updated');
+            if (admin) return res.status(201).send('Ward Updated');
 
-            return res.status(201).send('Update failed');
+            return res.status(501).send('Update failed');
         } catch (e) {
             return res.status(500);
         }

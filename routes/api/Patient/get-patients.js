@@ -8,7 +8,7 @@ Route.get('/', authentication, async function (req, res) {
         let patients = await db.findAllPatient();
         if (!patients) return res.status(400).send('Patients do not Exist');
 
-        res.status(201).send(patients);
+        res.status(200).send(patients);
     } catch (e) {
         return res.status(500);
     }

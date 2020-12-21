@@ -32,7 +32,9 @@ Route.post(
                 .spawnAlphaNumericLength(10)
                 .toUpperCase()}`;
 
-            let doctor = await db.findDoctor({ username: username });
+            let doctor = await db.findDoctor({
+                username: username.toLowerCase()
+            });
             if (doctor) return res.status(400).send('Doctor Exists');
             await db.addDoctor({
                 doctor_id: temporalId,
@@ -47,7 +49,7 @@ Route.post(
                 password: bcrypt.hashSync(password, bcrypt.genSaltSync())
             });
 
-            res.status(201).send('Doctor Added');
+            res.status(201).send({ doctor_id: temporalId });
         } catch (e) {
             return res.status(500);
         }

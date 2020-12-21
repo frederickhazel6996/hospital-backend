@@ -9,7 +9,7 @@ Route.get('/', authentication, async function (req, res) {
         if (!receptionist)
             return res.status(400).send('Receptionists do not Exist');
 
-        res.status(201).send(receptionist);
+        res.status(200).send(receptionist);
     } catch (e) {
         return res.status(500);
     }

@@ -42,7 +42,7 @@ let addPatientChecker = [
     check('phone_number', 'Phone Number should  not be empty')
         .not()
         .isEmpty()
-        .isNumeric()
+        .isString()
 ];
 let updatePatientChecker = [
     check('first_name', 'First Name should  not be empty')
@@ -91,6 +91,6 @@ let updatePatientChecker = [
     check('phone_number', 'Phone Number should  not be empty')
         .not()
         .isEmpty()
-        .isNumeric()
+        .isString()
 ];
 module.exports = { updatePatientChecker, addPatientChecker };

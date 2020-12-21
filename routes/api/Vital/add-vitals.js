@@ -11,6 +11,7 @@ Route.post(
     validator.addVitalChecker,
     async function (req, res) {
         try {
+            req.body.patient_id;
             let errors = validationResult(req);
             if (!errors.isEmpty()) {
                 return res.status(422).json({ errors: errors.array() });
@@ -39,7 +40,7 @@ Route.post(
                 checkin_date: moment().format('MMMM Do YYYY')
             });
 
-            return res.status(201).send('Vitals Added');
+            return res.status(201).send({ vital_id: temporalId });
         } catch (e) {
             return res.status(500);
         }

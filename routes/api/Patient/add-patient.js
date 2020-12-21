@@ -37,7 +37,8 @@ Route.post(
                 .toUpperCase()}`;
 
             let patient = await db.findPatient({ phone_number: phone_number });
-            if (patient) return res.status(400).send('Doctor Exists');
+            if (patient)
+                return res.status(400).send({ patient_id: temporalId });
             await db.addPatient({
                 patient_id: temporalId,
                 first_name,
@@ -55,7 +56,7 @@ Route.post(
                 registration_date: moment().format('MMMM Do YYYY')
             });
 
-            res.status(201).send('Patient Added');
+            res.status(201).send({ patient_id: temporalId });
         } catch (e) {
             return res.status(500);
         }

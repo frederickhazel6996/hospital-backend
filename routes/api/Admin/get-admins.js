@@ -7,7 +7,7 @@ Route.get('/', authentication, async function (req, res) {
         let admins = await db.findAllAdmin();
         if (!admins) return res.status(400).send('Admins do not Exist');
 
-        res.status(201).send(admins);
+        res.status(200).send(admins);
     } catch (e) {
         return res.status(500);
     }

@@ -5,9 +5,10 @@ const knex = require('../knex/knex');
 const faker = require('faker');
 const { setupDB, teardown } = require('./utils');
 
-var drug_id;
-var drug_name = faker.lorem.word();
-var api = '/api/drug';
+var ward_id;
+var ward_name = faker.lorem.word();
+
+var api = '/api/ward';
 beforeAll(async done => {
     await setupDB(knex);
     done();
@@ -19,44 +20,44 @@ afterAll(async done => {
     done();
 });
 
-test('Add drug to database', async () => {
+test('Add ward to database', async () => {
     await request(testapp)
-        .post(`${api}/add-drug`)
+        .post(`${api}/add-ward`)
         .send({
-            name: drug_name,
-            stock: 290
+            name: ward_name,
+            number_beds: 290
         })
         .set('Authorization', `Bearer ${process.env.TEST_TOKEN}`)
         .set('Accept', 'application/json')
         .expect(201)
         .then(response => {
-            drug_id = response.body.drug_id;
+            ward_id = response.body.ward_id;
         });
 });
-test('Update drug in database', async () => {
+test('Update ward in database', async () => {
     await request(testapp)
-        .post(`${api}/update-drug`)
+        .post(`${api}/update-ward`)
         .send({
-            name: drug_name,
-            stock: 400,
-            drug_id: drug_id
+            name: ward_name,
+            number_beds: 400,
+            ward_id: ward_id
         })
         .set('Authorization', `Bearer ${process.env.TEST_TOKEN}`)
         .set('Accept', 'application/json')
         .expect(201);
 });
 
-test('Get drugs in database', async () => {
+test('Get wards in database', async () => {
     await request(testapp)
-        .get(`${api}/get-drugs`)
+        .get(`${api}/get-wards`)
         .set('Authorization', `Bearer ${process.env.TEST_TOKEN}`)
         .set('Accept', 'application/json')
         .expect(200);
 });
 
-test('Delete drug from database', async () => {
+test('Delete ward from database', async () => {
     await request(testapp)
-        .get(`${api}/delete-drug/${drug_id}`)
+        .get(`${api}/delete-ward/${ward_id}`)
         .set('Authorization', `Bearer ${process.env.TEST_TOKEN}`)
         .set('Accept', 'application/json')
         .expect(201);

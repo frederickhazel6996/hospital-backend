@@ -35,7 +35,7 @@ Route.post(
                 password: bcrypt.hashSync(password, bcrypt.genSaltSync())
             });
 
-            res.status(201).send('Receptionist Added');
+            res.status(201).send({ receptionist_id: temporalId });
         } catch (e) {
             return res.status(500);
         }
