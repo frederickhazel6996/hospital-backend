@@ -12,9 +12,10 @@ Route.get('/:id', authentication, async function (req, res) {
         const { id: drugID } = req.params;
 
         const db = dbService;
-        await db.deleteDrug({ id: drugID });
+        let deletedDrug = await db.deleteDrug({ drug_id: drugID });
+        if (!deletedDrug) return res.status(501);
 
-        res.status(201).send('Drug Deleted');
+        return res.status(201).send('Drug Deleted');
     } catch (e) {
         return res.status(500);
     }

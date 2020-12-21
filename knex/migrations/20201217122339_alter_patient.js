@@ -4,6 +4,4 @@ exports.up = function (knex) {
     });
 };
 
-exports.down = function (knex) {
-    return knex.schema.dropTable('patient');
-};
+exports.down = function (knex) {};

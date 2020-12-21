@@ -24,9 +24,9 @@ Route.post(
                     stock
                 }
             );
-            if (admin) return res.status(400).send('Drug Updated');
+            if (admin) return res.status(200).send('Drug Updated');
 
-            return res.status(201).send('Update failed');
+            return res.status(422).send('Update failed');
         } catch (e) {
             return res.status(500);
         }

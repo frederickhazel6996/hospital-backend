@@ -30,7 +30,7 @@ Route.post(
                 stock
             });
 
-            res.status(201).send('Drug Added');
+            res.status(201).send({ drug_id: temporalId });
         } catch (e) {
             return res.status(500);
         }
