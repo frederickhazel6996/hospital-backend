@@ -3,14 +3,14 @@ module.exports = async function (knex) {
     try {
         // throw "simple error"
         const tables = [
+            'vitals',
+            'record',
+            'ward',
             'admin',
             'doctor',
             'drug',
             'patient',
-            'receptionist',
-            'record',
-            'ward',
-            'vitals'
+            'receptionist'
         ];
 
         for (let table of tables) {

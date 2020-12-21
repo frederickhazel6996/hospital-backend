@@ -37,7 +37,7 @@ Route.post(
                 prescribed_drugs
             });
 
-            return res.status(201).send('Record Added');
+            return res.status(201).send({ record_id: temporalId });
         } catch (e) {
             return res.status(500);
         }

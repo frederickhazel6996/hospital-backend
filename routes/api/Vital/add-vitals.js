@@ -40,7 +40,7 @@ Route.post(
                 checkin_date: moment().format('MMMM Do YYYY')
             });
 
-            return res.status(201).send({ vital_id: temporalId });
+            return res.status(201).send({ vitals_id: temporalId });
         } catch (e) {
             return res.status(500);
         }

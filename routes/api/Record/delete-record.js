@@ -11,7 +11,7 @@ Route.get('/:id', authentication, async function (req, res) {
         const { id: recordID } = req.params;
 
         const db = dbService;
-        await db.deleteRecord({ id: recordID });
+        await db.deleteRecord({ record_id: recordID });
 
         res.status(201).send('Record Deleted');
     } catch (e) {

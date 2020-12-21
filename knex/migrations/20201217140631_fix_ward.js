@@ -4,4 +4,8 @@ exports.up = function (knex) {
     });
 };
 
-exports.down = function (knex) {};
+exports.down = function (knex) {
+    return knex.schema.alterTable('ward', table => {
+        table.dropColumn('ward_id');
+    });
+};

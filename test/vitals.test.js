@@ -26,9 +26,16 @@ var next_kin_relation = faker.lorem.word();
 var patient_api = '/api/patient';
 
 var api = '/api/vital';
-beforeAll(async done => {
+beforeAll(async () => {
     await setupDB(knex);
+});
 
+afterAll(async () => {
+    await teardown(knex);
+    await knex.destroy();
+});
+
+test('Add Test Patient', async () => {
     await request(testapp)
         .post(`${patient_api}/add-patient`)
         .send({
@@ -50,34 +57,25 @@ beforeAll(async done => {
         .expect(201)
         .then(response => {
             patient_id = response.body.patient_id;
-            console.log(patient_id + 'sjdahkjasdhjasjkh');
         });
-    done();
 });
-
-afterAll(async done => {
-    await teardown(knex);
-    await knex.destroy();
-    done();
+test('Add vitals to database', async () => {
+    await request(testapp)
+        .post(`${api}/add-vitals`)
+        .send({
+            weight: vital_weight,
+            height: vital_height,
+            temperature: vital_temperature,
+            blood_pressure: vital_blood_pressure,
+            patient_id: patient_id
+        })
+        .set('Authorization', `Bearer ${process.env.TEST_TOKEN}`)
+        .set('Accept', 'application/json')
+        .expect(201)
+        .then(response => {
+            vitals_id = response.body.vitals_id;
+        });
 });
-
-// test('Add vitals to database', async () => {
-//     await request(testapp)
-//         .post(`${api}/add-vitals`)
-//         .send({
-//             weight: vital_weight,
-//             height: vital_height,
-//             temperature: vital_temperature,
-//             blood_pressure: vital_blood_pressure,
-//             patient_id: patient_id
-//         })
-//         .set('Authorization', `Bearer ${process.env.TEST_TOKEN}`)
-//         .set('Accept', 'application/json')
-//         .expect(201)
-//         .then(response => {
-//             vitals_id = response.body.vitals_id;
-//         });
-// });
 
 test('Get vitals in database', async () => {
     await request(testapp)
@@ -87,14 +85,14 @@ test('Get vitals in database', async () => {
         .expect(200);
 });
 
-// test('Get patient vital', async () => {
-//     await request(testapp)
-//         .get(`${api}/get-patient-vitals`)
-//         .query({ patient_id: patient_id })
-//         .set('Authorization', `Bearer ${process.env.TEST_TOKEN}`)
-//         .set('Accept', 'application/json')
-//         .expect(200);
-// });
+test('Get patient vitals', async () => {
+    await request(testapp)
+        .get(`${api}/get-patient-vitals`)
+        .query({ patient_id: patient_id })
+        .set('Authorization', `Bearer ${process.env.TEST_TOKEN}`)
+        .set('Accept', 'application/json')
+        .expect(200);
+});
 
 test('Delete vitals from database', async () => {
     await request(testapp)

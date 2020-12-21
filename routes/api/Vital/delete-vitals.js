@@ -11,9 +11,9 @@ Route.get('/:id', authentication, async function (req, res) {
         const { id: deleteID } = req.params;
 
         const db = dbService;
-        await db.deleteVital({ id: deleteID });
+        await db.deleteVital({ vital_id: deleteID });
 
-        res.status(200).send('Vitals Deleted');
+        res.status(201).send('Vitals Deleted');
     } catch (e) {
         return res.status(500);
     }

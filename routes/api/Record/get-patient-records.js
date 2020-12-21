@@ -20,7 +20,7 @@ Route.get(
             if (!records)
                 return res.status(400).send('Patient Records do not Exist');
 
-            res.status(201).send(records);
+            res.status(200).send(records);
         } catch (e) {
             return res.status(500);
         }
