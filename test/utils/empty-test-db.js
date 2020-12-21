@@ -3,8 +3,8 @@ module.exports = async function (knex) {
     try {
         // throw "simple error"
         const tables = [
-            'vitals',
             'record',
+            'vitals',
             'ward',
             'admin',
             'doctor',
