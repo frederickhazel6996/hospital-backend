@@ -39,7 +39,8 @@ test('Add doctor to database', async () => {
             other_name: doctor_other_name,
             speciality: doctor_speciality,
             age: doctor_age,
-            sex: doctor_sex
+            sex: doctor_sex,
+            phone_number: '0238489283'
         })
         .set('Authorization', `Bearer ${process.env.TEST_TOKEN}`)
         .set('Accept', 'application/json')
@@ -79,7 +80,8 @@ test('Update doctor', async () => {
             other_name: doctor_other_name,
             speciality: doctor_speciality,
             age: doctor_age,
-            sex: doctor_sex
+            sex: doctor_sex,
+            phone_number: '0238489283'
         })
         .set('Authorization', `Bearer ${process.env.TEST_TOKEN}`)
         .set('Accept', 'application/json')
