@@ -16,7 +16,17 @@ Route.post(
             }
             const db = dbService;
 
-            let { name, stock } = req.body;
+            let {
+                name,
+                stock,
+                cost,
+                type_drug_1,
+                type_drug_2,
+                dosage,
+                manufacturer,
+                warning,
+                uses
+            } = req.body;
 
             let temporalId = `DRUG${spawn
                 .spawnAlphaNumericLength(10)
@@ -27,7 +37,14 @@ Route.post(
             await db.addDrug({
                 drug_id: temporalId,
                 name,
-                stock
+                stock,
+                cost,
+                type_drug_1,
+                type_drug_2,
+                dosage,
+                manufacturer,
+                warning,
+                uses
             });
 
             res.status(201).send({ drug_id: temporalId });

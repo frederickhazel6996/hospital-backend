@@ -41,11 +41,6 @@ test('Add patient to database', async () => {
             age: patient_age,
             sex: patient_sex,
             phone_number: patient_number,
-            next_kin_name: next_kin_name,
-            next_kin_relation: next_kin_relation,
-            date_birth: patient_dob,
-            place_birth: patient_pob,
-            insurance_type: insurance_type,
             added_by: patient_added_by
         })
         .set('Authorization', `Bearer ${process.env.TEST_TOKEN}`)
@@ -75,11 +70,6 @@ test('Update patient', async () => {
             age: patient_age,
             sex: patient_sex,
             phone_number: patient_number,
-            next_kin_name: next_kin_name,
-            next_kin_relation: next_kin_relation,
-            date_birth: patient_dob,
-            place_birth: patient_pob,
-            insurance_type: insurance_type,
             added_by: patient_added_by
         })
         .set('Authorization', `Bearer ${process.env.TEST_TOKEN}`)

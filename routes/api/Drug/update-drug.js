@@ -15,12 +15,11 @@ Route.post(
             }
             const db = dbService;
 
-            let { name, stock, drug_id } = req.body;
+            let { stock, drug_id } = req.body;
 
             let admin = await db.updateDrug(
                 { drug_id: drug_id },
                 {
-                    name,
                     stock
                 }
             );

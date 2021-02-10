@@ -15,7 +15,7 @@ Route.post(
             }
             const db = dbService;
 
-            let { name, number_beds, ward_id } = req.body;
+            let { name, number_beds, ward_id, gender } = req.body;
 
             let admin = await db.updateWard(
                 { ward_id: ward_id },

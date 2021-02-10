@@ -25,7 +25,8 @@ test('Add ward to database', async () => {
         .post(`${api}/add-ward`)
         .send({
             name: ward_name,
-            number_beds: 290
+            number_beds: 290,
+            gender: 'Male'
         })
         .set('Authorization', `Bearer ${process.env.TEST_TOKEN}`)
         .set('Accept', 'application/json')
@@ -40,7 +41,8 @@ test('Update ward in database', async () => {
         .send({
             name: ward_name,
             number_beds: 400,
-            ward_id: ward_id
+            ward_id: ward_id,
+            gender: 'Female'
         })
         .set('Authorization', `Bearer ${process.env.TEST_TOKEN}`)
         .set('Accept', 'application/json')

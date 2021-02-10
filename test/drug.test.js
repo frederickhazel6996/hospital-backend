@@ -24,7 +24,14 @@ test('Add drug to database', async () => {
         .post(`${api}/add-drug`)
         .send({
             name: drug_name,
-            stock: 290
+            stock: 290,
+            cost: 'GHC400',
+            type_drug_2: 'Prescription',
+            type_drug_1: 'Anti Depressant',
+            dosage: '75mg',
+            manufacturer: drug_name,
+            warning: drug_name,
+            uses: drug_name
         })
         .set('Authorization', `Bearer ${process.env.TEST_TOKEN}`)
         .set('Accept', 'application/json')
@@ -37,7 +44,6 @@ test('Update drug in database', async () => {
     await request(testapp)
         .post(`${api}/update-drug`)
         .send({
-            name: drug_name,
             stock: 400,
             drug_id: drug_id
         })

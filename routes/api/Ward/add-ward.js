@@ -16,7 +16,7 @@ Route.post(
             }
             const db = dbService;
 
-            let { name, number_beds } = req.body;
+            let { name, number_beds, gender } = req.body;
 
             let temporalId = `WARD${spawn
                 .spawnAlphaNumericLength(10)
@@ -27,7 +27,8 @@ Route.post(
             await db.addWard({
                 ward_id: temporalId,
                 name,
-                number_beds
+                number_beds,
+                gender
             });
 
             res.status(201).send({ ward_id: temporalId });

@@ -25,7 +25,8 @@ Route.post(
                 other_name,
                 speciality,
                 age,
-                sex
+                sex,
+                phone_number
             } = req.body;
 
             let temporalId = `DOC${spawn
@@ -44,6 +45,7 @@ Route.post(
                 speciality,
                 age,
                 sex,
+                phone_number,
                 username: username.toLowerCase(),
 
                 password: bcrypt.hashSync(password, bcrypt.genSaltSync())

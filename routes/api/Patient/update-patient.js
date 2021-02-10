@@ -21,11 +21,6 @@ Route.post(
                 age,
                 sex,
                 phone_number,
-                next_kin_name,
-                next_kin_relation,
-                date_birth,
-                place_birth,
-                insurance_type,
                 added_by,
                 patient_id
             } = req.body;
@@ -39,11 +34,6 @@ Route.post(
                     age,
                     sex,
                     phone_number,
-                    next_kin_name,
-                    next_kin_relation,
-                    date_birth,
-                    place_birth,
-                    insurance_type,
                     added_by,
                     patient_id
                 }

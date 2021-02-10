@@ -24,11 +24,6 @@ Route.post(
                 age,
                 sex,
                 phone_number,
-                next_kin_name,
-                next_kin_relation,
-                date_birth,
-                place_birth,
-                insurance_type,
                 added_by
             } = req.body;
 
@@ -47,11 +42,6 @@ Route.post(
                 age,
                 sex,
                 phone_number,
-                next_kin_name,
-                next_kin_relation,
-                date_birth,
-                place_birth,
-                insurance_type,
                 added_by,
                 registration_date: moment().format('MMMM Do YYYY')
             });
