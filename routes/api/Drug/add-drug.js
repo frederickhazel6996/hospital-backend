@@ -32,7 +32,7 @@ Route.post(
                 .spawnAlphaNumericLength(10)
                 .toUpperCase()}`;
 
-            let drug = await db.findDrug({ name: name });
+            let drug = await db.findDrug({ name: name, dosage: dosage });
             if (drug) return res.status(400).send('Drug Exists');
             await db.addDrug({
                 drug_id: temporalId,

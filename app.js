@@ -3,9 +3,14 @@ let express = require('express');
 let path = require('path');
 let indexRouter = require('./routes/index');
 let app = express();
+
+let cors = require('cors');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 require('dotenv').config();
+
+//setting cors header during development
+app.use(cors());
 
 let {
     startMongo,

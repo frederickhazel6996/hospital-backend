@@ -8,7 +8,7 @@ exports.seed = function (knex) {
                 {
                     id: 1,
                     name: 'Venlafaxine',
-                    cost: 'GHC250',
+                    cost: '250',
                     stock: 150,
                     drug_id: 'DRUGSKADHJ239S',
                     type_drug_1: 'Anti Depressant',
@@ -23,7 +23,7 @@ exports.seed = function (knex) {
                 {
                     id: 2,
                     name: 'Tylenol',
-                    cost: 'GHC90',
+                    cost: '90',
                     stock: 800,
                     drug_id: 'DRUGSKSHAD3I',
                     type_drug_1: 'Pain Killer',
