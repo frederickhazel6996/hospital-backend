@@ -31,7 +31,7 @@ Route.post(
                 gender
             });
 
-            res.status(201).send({ ward_id: temporalId });
+            return res.status(201).send({ ward_id: temporalId });
         } catch (e) {
             return res.status(500);
         }

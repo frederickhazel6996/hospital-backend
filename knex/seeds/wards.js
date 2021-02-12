@@ -32,6 +32,13 @@ exports.seed = function (knex) {
                     number_beds: 200,
                     gender: 'Children',
                     ward_id: 'WARDBDBHJASASJH82'
+                },
+                {
+                    id: 5,
+                    name: 'St Francis Emergency',
+                    number_beds: 180,
+                    gender: 'Emergency',
+                    ward_id: 'WARDBDBHJASA342H82'
                 }
             ]);
         });

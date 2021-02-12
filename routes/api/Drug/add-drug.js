@@ -47,7 +47,7 @@ Route.post(
                 uses
             });
 
-            res.status(201).send({ drug_id: temporalId });
+            return res.status(201).send({ drug_id: temporalId });
         } catch (e) {
             return res.status(500);
         }

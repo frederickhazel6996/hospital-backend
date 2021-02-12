@@ -21,7 +21,8 @@ Route.post(
                 { ward_id: ward_id },
                 {
                     name,
-                    number_beds
+                    number_beds,
+                    gender
                 }
             );
             if (admin) return res.status(201).send('Ward Updated');

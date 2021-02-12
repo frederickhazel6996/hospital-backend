@@ -8,7 +8,7 @@ Route.get('/', authentication, async function (req, res) {
         let wards = await db.findAllWard();
         if (!wards) return res.status(400).send('Wards do not Exist');
 
-        res.status(200).send(wards);
+        return res.status(200).send(wards);
     } catch (e) {
         return res.status(500);
     }
