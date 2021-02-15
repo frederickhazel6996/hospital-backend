@@ -18,7 +18,7 @@ Route.post(
 
             let {
                 username,
-                password,
+
                 first_name,
                 last_name,
                 other_name,
@@ -37,8 +37,7 @@ Route.post(
                     speciality,
                     age,
                     sex,
-                    username: username.toLowerCase(),
-                    password: bcrypt.hashSync(password, bcrypt.genSaltSync())
+                    username: username.toLowerCase()
                 }
             );
             if (admin) return res.status(201).send('Doctor Updated');

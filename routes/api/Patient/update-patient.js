@@ -11,6 +11,7 @@ Route.post(
         try {
             let errors = validationResult(req);
             if (!errors.isEmpty()) {
+                console.log(errors.array());
                 return res.status(422).json({ errors: errors.array() });
             }
             const db = dbService;
@@ -21,7 +22,6 @@ Route.post(
                 age,
                 sex,
                 phone_number,
-                added_by,
                 patient_id
             } = req.body;
 
@@ -34,7 +34,6 @@ Route.post(
                     age,
                     sex,
                     phone_number,
-                    added_by,
                     patient_id
                 }
             );

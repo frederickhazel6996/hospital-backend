@@ -14,26 +14,7 @@ let addPatientChecker = [
         .isString(),
 
     check('sex', 'Sex should  not be empty').not().isEmpty().isString(),
-    check('next_kin_name', 'Next of Kin Name should  not be empty')
-        .not()
-        .isEmpty()
-        .isString(),
-    check('next_kin_relation', 'Next of Kin Relation should  not be empty')
-        .not()
-        .isEmpty()
-        .isString(),
-    check('date_birth', 'Date of Birth should  not be empty')
-        .not()
-        .isEmpty()
-        .isString(),
-    check('place_birth', 'Place of Birth should  not be empty')
-        .not()
-        .isEmpty()
-        .isString(),
-    check('insurance_type', 'Insurance Type should  not be empty')
-        .not()
-        .isEmpty()
-        .isString(),
+
     check('added_by', 'Added By should  not be empty')
         .not()
         .isEmpty()
@@ -59,30 +40,7 @@ let updatePatientChecker = [
         .isString(),
 
     check('sex', 'Sex should  not be empty').not().isEmpty().isString(),
-    check('next_kin_name', 'Next of Kin Name should  not be empty')
-        .not()
-        .isEmpty()
-        .isString(),
-    check('next_kin_relation', 'Next of Kin Relation should  not be empty')
-        .not()
-        .isEmpty()
-        .isString(),
-    check('date_birth', 'Date of Birth should  not be empty')
-        .not()
-        .isEmpty()
-        .isString(),
-    check('place_birth', 'Place of Birth should  not be empty')
-        .not()
-        .isEmpty()
-        .isString(),
-    check('insurance_type', 'Insurance Type should  not be empty')
-        .not()
-        .isEmpty()
-        .isString(),
-    check('added_by', 'Added By should  not be empty')
-        .not()
-        .isEmpty()
-        .isString(),
+
     check('patient_id', 'Patient ID should  not be empty')
         .not()
         .isEmpty()

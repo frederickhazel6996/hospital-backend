@@ -51,7 +51,7 @@ Route.post(
                 password: bcrypt.hashSync(password, bcrypt.genSaltSync())
             });
 
-            res.status(201).send({ doctor_id: temporalId });
+            return res.status(201).send({ doctor_id: temporalId });
         } catch (e) {
             return res.status(500);
         }

@@ -18,10 +18,6 @@ let addDoctorChecker = [
         .not()
         .isEmpty()
         .isString(),
-    check('other_name', 'Other Name should  not be empty')
-        .not()
-        .isEmpty()
-        .isString(),
     check('speciality', 'Specialty should  not be empty')
         .not()
         .isEmpty()
@@ -36,10 +32,6 @@ let updateDoctorChecker = [
         .isString()
         .isEmail(),
 
-    check('password', 'Password should  not be empty')
-        .not()
-        .isEmpty()
-        .isString(),
     check('first_name', 'First Name should  not be empty')
         .not()
         .isEmpty()
@@ -48,10 +40,7 @@ let updateDoctorChecker = [
         .not()
         .isEmpty()
         .isString(),
-    check('other_name', 'Other Name should  not be empty')
-        .not()
-        .isEmpty()
-        .isString(),
+
     check('speciality', 'Specialty should  not be empty')
         .not()
         .isEmpty()
