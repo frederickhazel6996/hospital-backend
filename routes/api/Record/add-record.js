@@ -18,10 +18,10 @@ Route.post(
 
             let {
                 symptoms,
-                doctor_id,
                 patient_id,
                 diagnosis,
-                prescribed_drugs
+                prescribed_drugs,
+                admin_id
             } = req.body;
 
             let temporalId = `RECORD${spawn
@@ -31,7 +31,7 @@ Route.post(
             await db.addRecord({
                 record_id: temporalId,
                 symptoms,
-                doctor_id,
+                admin_id,
                 patient_id,
                 diagnosis,
                 prescribed_drugs

@@ -23,7 +23,7 @@ Route.post(
                 height,
                 temperature,
                 blood_pressure,
-                patient_id
+                record_id
             } = req.body;
 
             let temporalId = `VITALS${spawn
@@ -36,7 +36,7 @@ Route.post(
                 height,
                 temperature,
                 blood_pressure,
-                patient_id,
+                record_id,
                 checkin_date: moment().format('MMMM Do YYYY')
             });
 
