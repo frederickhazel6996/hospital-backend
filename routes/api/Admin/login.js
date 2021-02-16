@@ -24,8 +24,9 @@ Route.post('/', validator.loginAdminChecker, async function (req, res) {
 
         if (bcrypt.compareSync(password, admin.password) === true)
             return res.status(200).send({
-                name: admin.name,
-                access_token: access_token
+                name: admin.username,
+                access_token: access_token,
+                admin_id: admin.admin_id
             });
         return res.status(400).send('Wrong Password or Username');
     } catch (e) {

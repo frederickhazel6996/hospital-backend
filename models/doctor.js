@@ -12,7 +12,7 @@ class Doctor extends Model {
         return {
             doctorPatients: {
                 relation: Model.HasManyRelation,
-                ModelClass: require('./record'),
+                modelClass: require('./record'),
                 join: {
                     from: 'doctor.patient_id',
                     to: 'record.patient_id'

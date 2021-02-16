@@ -12,10 +12,10 @@ class Vital extends Model {
         return {
             patientVitals: {
                 relation: Model.BelongsToOneRelation,
-                ModelClass: require('./patient'),
+                modelClass: require('./record'),
                 join: {
-                    from: 'vitals.patient_id',
-                    to: 'patient.patient_id'
+                    from: 'vitals.record_id',
+                    to: 'record.record_id'
                 }
             }
         };

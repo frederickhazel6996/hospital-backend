@@ -3,31 +3,37 @@ const knex = require('../knex/knex');
 
 Model.knex(knex);
 
-class Record extends Model {
+module.exports = class Record extends Model {
     static get tableName() {
         return 'record';
     }
 
     static get relationMappings() {
         return {
-            patientRecords: {
+            patientRecordsChild: {
                 relation: Model.BelongsToOneRelation,
-                ModelClass: require('./patient'),
+                modelClass: __dirname + '/patient',
                 join: {
                     from: 'record.patient_id',
                     to: 'patient.patient_id'
                 }
             },
-            doctorRecords: {
+            adminRecords: {
                 relation: Model.BelongsToOneRelation,
-                ModelClass: require('./doctor'),
+                modelClass: require('./admin'),
                 join: {
-                    from: 'record.doctor_id',
-                    to: 'patient.doctor_id'
+                    from: 'record.admin_id',
+                    to: 'admin.admin_id'
+                }
+            },
+            vitalRecords: {
+                relation: Model.HasOneRelation,
+                modelClass: require('./vital'),
+                join: {
+                    from: 'record.record_id',
+                    to: 'vitals.record_id'
                 }
             }
         };
     }
-}
-
-module.exports = Record;
+};

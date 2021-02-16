@@ -13,10 +13,11 @@ Route.get(
             if (!errors.isEmpty()) {
                 return res.status(422).json({ errors: errors.array() });
             }
-            let { patient_id } = req.query;
+            let { record_id } = req.query;
+            console.log(record_id);
             const db = dbService;
 
-            let records = await db.findVitalWhere({ patient_id: patient_id });
+            let records = await db.findVitalWhere({ record_id: record_id });
             if (!records)
                 return res
                     .status(400)
