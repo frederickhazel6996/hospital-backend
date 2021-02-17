@@ -9,11 +9,7 @@ let addVitalChecker = [
     check('blood_pressure', 'Blood Pressure should  not be empty')
         .not()
         .isEmpty()
-        .isNumeric(),
-    check('patient_id', 'Patient ID should  not be empty')
-        .not()
-        .isEmpty()
-        .isString()
+        .isNumeric()
 ];
 
 let fetchPatientVitalChecker = [

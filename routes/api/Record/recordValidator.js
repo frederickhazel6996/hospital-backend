@@ -4,7 +4,7 @@ let addRecordChecker = [
         .not()
         .isEmpty()
         .isString(),
-    check('doctor_id', 'Doctor ID should  not be empty')
+    check('admin_id', 'Admin ID should  not be empty')
         .not()
         .isEmpty()
         .isString(),
@@ -26,7 +26,7 @@ let updateRecordChecker = [
         .not()
         .isEmpty()
         .isString(),
-    check('doctor_id', 'Doctor ID should  not be empty')
+    check('admin_id', 'Admin ID should  not be empty')
         .not()
         .isEmpty()
         .isString(),

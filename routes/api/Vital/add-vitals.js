@@ -11,7 +11,6 @@ Route.post(
     validator.addVitalChecker,
     async function (req, res) {
         try {
-            req.body.patient_id;
             let errors = validationResult(req);
             if (!errors.isEmpty()) {
                 return res.status(422).json({ errors: errors.array() });
